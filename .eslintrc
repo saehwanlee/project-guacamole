@@ -1,3 +1,61 @@
 {
-  "extends": ["@remix-run/eslint-config", "@remix-run/eslint-config/node"]
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      // jsx 파싱 허용 여부
+      "jsx": true,
+      // 전역 return 허용 여부
+      "globalReturn": false
+    },
+    // ES 버전
+    "ecmaVersion": "latest"
+  },
+
+  // extend(익스텐션): 해당 패키지의 모든 린트 규칙을 우리 패키지에 적용
+  "extends": [
+    // ** React 설정 **
+    /* 에어비앤비 권장 패키지: 4개의 패키지의 변형과 추가 규칙들로 구성
+      1. eslint
+      2. eslint-plugin-import
+      3. eslint-plugin-react
+      4. eslint-plugin-jsx-a11y (accessibility, 접근성)
+    */
+    "airbnb",
+    // react-hooks 패키지의 변형으로 구성
+    "airbnb/hooks",
+
+    // ** Typescript 설정 **
+    // 타입스크립트 권장 패키지: eslint 패키지의 변형과 추가 규칙들로 구성
+    "plugin:@typescript-eslint/recommended",
+    // 타입 확인 요구하도록 설정
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    // 타입 더 엄격하게 적용, 위반 시 경고
+    "plugin:@typescript-eslint/strict",
+    // airbnb 패키지의 변형과 typescript 패키지의 변형으로 구성
+    "airbnb-typescript",
+
+    // ** Remix 설정 **
+    /* 리믹스 권장 패키지: 5개의 패키지의 변형과 추가 규칙들로 구성
+      1. eslint
+      2. eslint-plugin-import
+      3. eslint-plugin-react
+      4. eslint-plugin-jsx-a11y (accessibility, 접근성)
+      5. typescript-eslint
+    */
+    "@remix-run/eslint-config",
+    // TODO: Jest + Testing Library 사용 시 "@remix-run/eslint-config/jest-testing-library" 추가
+    // 리믹스 권장 패키지 규칙들을 node 환경에도 적용
+    "@remix-run/eslint-config/node",
+
+    // ** Prettier 설정 **
+    /* 중요: 항상 마지막 extension으로 설정해야 함
+      1. prettier 규칙과 충돌 가능성이 있는 모든 규칙을 무력화
+      2. .prettierrc 파일을 "error" 규칙으로 설정하여 적용
+    */
+    "plugin:prettier/recommended"
+  ],
+
+  // plugin(플러그인): 해당 패키지의 룰들 중 "rules" 영역에 명시된 룰을 우리 패키지에 적용
+  "plugins": [],
+  "rules": {}
 }
