@@ -1,7 +1,8 @@
-export default function Index() {
+export default function Layout(): JSX.Element {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <>
+      <header className="h-14 bg-black text-white">OCR Pack</header>
+      <main>메인</main>
+    </>
+  );
 }
